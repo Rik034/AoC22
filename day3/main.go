@@ -24,6 +24,7 @@ func ReadByLine(filename string) []string {
 
 func part1(input []string) {
 	for _, line := range input {
+		// TODO
 		fmt.Println(line)
 	}
 }
