@@ -23,29 +23,29 @@ func ReadByLine(filename string) []string {
 }
 
 func part1(input []string) int {
-	hand := make(map[string]string)
+	hand := map[string]string{
+		"A X": "tie",
+		"A Y": "win",
+		"A Z": "lose",
 
-	hand["A X"] = "tie"
-	hand["A Y"] = "win"
-	hand["A Z"] = "lose"
+		"B X": "lose",
+		"B Y": "tie",
+		"B Z": "win",
 
-	hand["B X"] = "lose"
-	hand["B Y"] = "tie"
-	hand["B Z"] = "win"
+		"C X": "win",
+		"C Y": "lose",
+		"C Z": "tie",
+	}
 
-	hand["C X"] = "win"
-	hand["C Y"] = "lose"
-	hand["C Z"] = "tie"
+	points := map[string]int{
+		"X": 1,
+		"Y": 2,
+		"Z": 3,
 
-	points := make(map[string]int)
-
-	points["X"] = 1
-	points["Y"] = 2
-	points["Z"] = 3
-
-	points["win"] = 6
-	points["tie"] = 3
-	points["lose"] = 0
+		"win":  6,
+		"tie":  3,
+		"lose": 0,
+	}
 
 	totalPoints := 0
 
@@ -58,29 +58,29 @@ func part1(input []string) int {
 }
 
 func part2(input []string) int {
-	handToPlay := make(map[string]string)
+	handToPlay := map[string]string{
+		"A X": "C",
+		"A Y": "A",
+		"A Z": "B",
 
-	handToPlay["A X"] = "C"
-	handToPlay["A Y"] = "A"
-	handToPlay["A Z"] = "B"
+		"B X": "A",
+		"B Y": "B",
+		"B Z": "C",
 
-	handToPlay["B X"] = "A"
-	handToPlay["B Y"] = "B"
-	handToPlay["B Z"] = "C"
+		"C X": "B",
+		"C Y": "C",
+		"C Z": "A",
+	}
 
-	handToPlay["C X"] = "B"
-	handToPlay["C Y"] = "C"
-	handToPlay["C Z"] = "A"
+	points := map[string]int{
+		"X": 0,
+		"Y": 3,
+		"Z": 6,
 
-	points := make(map[string]int)
-
-	points["X"] = 0
-	points["Y"] = 3
-	points["Z"] = 6
-
-	points["A"] = 1
-	points["B"] = 2
-	points["C"] = 3
+		"A": 1,
+		"B": 2,
+		"C": 3,
+	}
 
 	totalPoints := 0
 
