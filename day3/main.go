@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 var priorities = map[string]int{
@@ -79,21 +80,38 @@ func ReadByLine(filename string) []string {
 }
 
 func part1(input []string) int {
-	found := false
 	sum := 0
 
 	for _, line := range input {
-		found = false
+		substr := ""
 		for i := 0; i < len(line)/2; i++ {
-			if found {
+			substr = line[len(line)/2:]
+			if strings.Contains(substr, string(line[i])) {
+				sum += priorities[string(line[i])]
 				break
 			}
-			for j := len(line) - 1; j >= len(line)/2; j-- {
-				if string(line[i]) == string(line[j]) {
-					found = true
-					sum += priorities[string(line[i])]
-					break
-				}
+		}
+	}
+	return sum
+}
+
+func part2(input []string) int {
+	groups := make([][]string, len(input)/3)
+	k := 0
+	for i := 0; i < len(input)/3; i++ {
+		groups[i] = make([]string, 3)
+		for j := 0; j < 3; j++ {
+			groups[i][j] = input[k]
+			k++
+		}
+	}
+
+	sum := 0
+	for i := 0; i < len(input)/3; i++ {
+		for j := 0; j < len(groups[i][0]); j++ {
+			if strings.Contains(groups[i][1], string(groups[i][0][j])) && strings.Contains(groups[i][2], string(groups[i][0][j])) {
+				sum += priorities[string(groups[i][0][j])]
+				break
 			}
 		}
 	}
@@ -104,5 +122,7 @@ func main() {
 	// input := ReadByLine("sample.txt")
 	input := ReadByLine("input.txt")
 	sumOfPriorities := part1(input)
-	fmt.Println("Part 1 = ", sumOfPriorities)
+	fmt.Println("Part 1 =", sumOfPriorities)
+	sumOfPriorities = part2(input)
+	fmt.Println("Part 2 =", sumOfPriorities)
 }
