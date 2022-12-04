@@ -97,8 +97,8 @@ func main() {
 	input := ReadByLine("input.txt")
 
 	points := part1(input)
-	fmt.Println("part1 = ", points)
+	fmt.Println("part1 = {}", points)
 
 	points = part2(input)
-	fmt.Println("part2 = ", points)
+	fmt.Println("part2 = {}", points)
 }
