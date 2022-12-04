@@ -57,6 +57,6 @@ func main() {
 	sort.Ints(elves)
 	reverse(elves)
 
-	fmt.Println("Part 1 = ", elves[0])
-	fmt.Println("Part 2 = ", elves[0]+elves[1]+elves[2])
+	fmt.Println("Part 1 =", elves[0])
+	fmt.Println("Part 2 =", elves[0]+elves[1]+elves[2])
 }
