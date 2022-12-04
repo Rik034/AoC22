@@ -104,5 +104,5 @@ func main() {
 	input := ReadByLine("sample.txt")
 	// input := ReadByLine("input.txt")
 	priorities := part1(input)
-  fmt.Println("")
+	fmt.Println("Part 1 = ", priorities)
 }
