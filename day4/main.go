@@ -46,6 +46,18 @@ func part1(input []string) int {
 	count := 0
 	for i := range nums {
 		if (nums[i][0] <= nums[i][2] && nums[i][1] >= nums[i][3]) || (nums[i][2] <= nums[i][0] && nums[i][3] >= nums[i][1]) {
+			count++
+		}
+	}
+	return count
+}
+
+func part2(input []string) int {
+	nums := cleanInput(input)
+	count := 0
+	for i := range nums {
+		if (nums[i][2] <= nums[i][0] && nums[i][0] <= nums[i][3]) || (nums[i][2] <= nums[i][1] && nums[i][1] <= nums[i][3]) ||
+			(nums[i][0] <= nums[i][2] && nums[i][2] <= nums[i][1]) || (nums[i][0] <= nums[i][3] && nums[i][3] <= nums[i][1]) {
 			// fmt.Println(nums[i])
 			count++
 		}
@@ -57,4 +69,5 @@ func main() {
 	// input := ReadByLine("sample.txt")
 	input := ReadByLine("input.txt")
 	fmt.Println(part1(input))
+	fmt.Println(part2(input))
 }
