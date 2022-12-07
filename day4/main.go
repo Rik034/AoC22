@@ -46,7 +46,7 @@ func part1(input []string) int {
 	count := 0
 	for i := range nums {
 		if (nums[i][0] <= nums[i][2] && nums[i][1] >= nums[i][3]) || (nums[i][2] <= nums[i][0] && nums[i][3] >= nums[i][1]) {
-			fmt.Println(nums[i])
+			// fmt.Println(nums[i])
 			count++
 		}
 	}
