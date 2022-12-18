@@ -68,6 +68,6 @@ func part2(input []string) int {
 func main() {
 	// input := ReadByLine("sample.txt")
 	input := ReadByLine("input.txt")
-	fmt.Println(part1(input))
-	fmt.Println(part2(input))
+	fmt.Println("Part 1 =", part1(input))
+	fmt.Println("Part 2 =", part2(input))
 }
