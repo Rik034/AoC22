@@ -18,14 +18,14 @@ func (s *Stack) Push(str string) {
 	*s = append(*s, str)
 }
 
-func (s *Stack) Pop() (string, bool) {
+func (s *Stack) Pop() string {
 	if s.IsEmpty() {
-		return "", false
+		return ""
 	} else {
 		index := len(*s) - 1
 		element := (*s)[index]
 		*s = (*s)[:index]
-		return element, true
+		return element
 	}
 }
 
@@ -122,9 +122,35 @@ func part1(input []string) string {
 	toReturn := ""
 
 	for _, move := range moves {
+		from := move[1] - 1
+		to := move[2] - 1
 		for i := 0; i < move[0]; i++ {
-			toMove, _ := stacks[move[1]-1].Pop()
-			stacks[move[2]-1].Push(toMove)
+			toMove := stacks[from].Pop()
+			stacks[to].Push(toMove)
+		}
+	}
+
+	for _, stack := range stacks {
+		toReturn += stack.Peek()
+	}
+
+	return toReturn
+}
+
+func part2(input []string) string {
+	stacks := createStacks(input)
+	moves := clearMoves(input)
+	toReturn := ""
+	var cratesToMove Stack
+
+	for _, move := range moves {
+		from := move[1] - 1
+		to := move[2] - 1
+		for i := 0; i < move[0]; i++ {
+			cratesToMove.Push(stacks[from].Pop())
+		}
+		for range cratesToMove {
+			stacks[to].Push(cratesToMove.Pop())
 		}
 	}
 
@@ -140,5 +166,6 @@ func main() {
 	input := ReadByLine("input.txt")
 	topCrates := part1(input)
 	fmt.Println("Part 1 =", topCrates)
-	fmt.Println("Part 2 =")
+	topCrates = part2(input)
+	fmt.Println("Part 2 =", topCrates)
 }
