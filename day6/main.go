@@ -47,8 +47,23 @@ func part1(input []string) int {
 	return 0
 }
 
+func part2(input []string) int {
+	stream := input[0]
+
+	for i := 0; i < len(stream); i++ {
+		if i-14 >= 0 {
+			str := stream[i-14 : i]
+			if uniqueChars(str) {
+				return i
+			}
+		}
+	}
+	return 0
+}
+
 func main() {
 	// input := ReadByLine("sample.txt")
 	input := ReadByLine("input.txt")
 	fmt.Println("Part 1 =", part1(input))
+	fmt.Println("Part 2 =", part2(input))
 }
