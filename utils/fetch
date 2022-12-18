@@ -11,7 +11,7 @@ mkdir -p "$dir"
 cd "$dir" || exit
 curl -b "$(cat "$utils/cookie")" "https://adventofcode.com/2022/day/$day/input" >"$dir/input.txt"
 go mod init day"$day"
-checkrunning # one of my scripts, checks if neovide is open and opens it if it's not
+vim --listen /tmp/nvim.pipe
 touch "$dir/sample.txt"
 cp "$utils/template.go" "$dir/main.go"
 /home/rik034/anaconda3/bin/nvr -l "$dir/main.go" # sends the file to nvim/neovide
